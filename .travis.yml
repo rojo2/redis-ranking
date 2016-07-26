@@ -3,4 +3,4 @@ node_js:
   - '6.3.0'
 services:
   - redis-server
-script: npm run test:debug
+script: npm test
