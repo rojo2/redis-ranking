@@ -3,9 +3,12 @@ const ranking = require("../ranking")();
 
 describe("Redis Ranking", function() {
 
+  const COUNT = 100;
+  const SCORE_MULTIPLIER = 1000;
+
   const rankingData = [];
-  for (let index = 100; index >= 0; index--) {
-    rankingData.push([`player${index}`, index * 1000]);
+  for (let index = COUNT; index >= 0; index--) {
+    rankingData.push([`player${index}`, index * SCORE_MULTIPLIER]);
   }
 
   before((done) => {
@@ -20,7 +23,7 @@ describe("Redis Ranking", function() {
 
     const promises = [];
     const oks = [];
-    for (let index = 0; index < 100; index++) {
+    for (let index = 0; index < COUNT; index++) {
       const [id, score] = rankingData[index];
       promises.push(ranking.score(id, score));
       oks.push(1);
