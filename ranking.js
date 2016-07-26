@@ -14,7 +14,7 @@ module.exports = function(...args) {
     score(userId, score, set = DEFAULT_SET) {
       return new Promise((resolve, reject) => {
         client
-          .zadd(set, "CH", score, userId, (err, res) => {
+          .zadd(set, score, userId, (err, res) => {
             if (err) {
               return reject(err);
             }
